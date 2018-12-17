@@ -18,7 +18,7 @@ do
 			mkdir bazar_clean/images/$YEAR/$MONTH
 		fi
 		
-		FILENAME=`echo "bazar/Bureau/image.png" | sed "s/.*\///"`
+		FILENAME=`echo "$FILE" | sed "s/.*\///"`
 		cp $FILE bazar_clean/images/$YEAR/$MONTH/$FILENAME
 		echo "$FILE est une image et a été créé le $YEAR"
 	fi
