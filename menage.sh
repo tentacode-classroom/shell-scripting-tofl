@@ -20,6 +20,22 @@ do
 		
 		FILENAME=`echo "$FILE" | sed "s/.*\///"`
 		cp $FILE bazar_clean/images/$YEAR/$MONTH/$FILENAME
-		echo "$FILE est une image et a été créé le $YEAR"
+	elif file "$FILE" | grep -qE 'MPEG'
+	then
+		if [ ! -d bazar_clean/videos ]
+		then
+			mkdir bazar_clean/videos
+		fi
+		
+		FILENAME=`echo "$FILE" | sed "s/.*\///"`
+		cp $FILE bazar_clean/videos/$FILENAME
+	else
+		if [ ! -d bazar_clean/divers ]
+		then
+			mkdir bazar_clean/divers
+		fi
+		
+		FILENAME=`echo "$FILE" | sed "s/.*\///"`
+		cp $FILE bazar_clean/divers/$FILENAME
 	fi
 done
